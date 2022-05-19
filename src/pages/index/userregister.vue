@@ -1,15 +1,23 @@
 <template>
     <div class="main-page">
         <template v-if="showHeader">
-            <q-card  :flat="isSubPage" class="page-section q-py-sm q-px-md q-mb-md nice-shadow-18" >
+            <q-card  :flat="isSubPage" class="page-section q-py-sm q-px-md q-mb-md q-mb-md nice-shadow-18" >
                 <div class="container">
                     <div class="row justify-between q-col-gutter-md">
-                        <div class="col-12 col-md-auto " >
+                        <div class="col-md-8 col-12 " >
                             <div class="" >
                                 <div class="row  items-center q-col-gutter-sm q-px-sm">
                                     <div class="col">
-                                        <div class="text-h6 text-primary">Add New Manager</div>
+                                        <div class="text-h6 text-primary">User registration</div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12 comp-grid" >
+                            <div class="">
+                                <div>
+                                    Already have an account?  
+                                    <q-btn     :rounded="false"  no-caps  unelevated    color="accent" icon="account_box" to="/"> Login</q-btn>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +122,7 @@
                                         </div>
                                     </div>
                                     <div v-if="showSubmitButton" class="text-center q-my-md">
-                                        <q-btn type="submit"    :rounded="false"  color="primary"  no-caps  unelevated   :disabled="invalid" icon-right="send" :loading="saving">
+                                        <q-btn    :rounded="false"  color="primary"  no-caps  unelevated   type="submit" :disabled="invalid" icon-right="send" :loading="saving">
                                             <q-spinner-oval slot="loading" /> Submit
                                         </q-btn>
                                     </div>
@@ -133,7 +141,7 @@
 	import { AddPageMixin } from "../../mixins/addpage.js";
 	import { mapActions, mapGetters, mapState } from "vuex";
 	export default {
-		name: 'addManagerPage',
+		name: 'RegisterComponent',
 		components: {
 		},
 		mixins: [PageMixin, AddPageMixin ],
@@ -144,11 +152,11 @@
 			},
 			routeName : {
 				type : String,
-				default : 'manageradd',
+				default : 'manageruserregister',
 			},
 			apiPath : {
 				type : String,
-				default : 'manager/add',
+				default : 'auth/register',
 			},
 		},
 		data() {
@@ -165,7 +173,7 @@
 				}
 			},
 		},
-		meta () {
+		meta() {
 			return {
 				title: this.pageTitle
 			}
@@ -180,14 +188,17 @@
 					let url = this.apiUrl;
 					let data = { url, payload  }
 					this.saveRecord(data).then((response) => {
-						this.record = response.data ?? {};
-						this.id = this.record['manager_id'] ?? null;
 						this.saving = false;
 						this.resetForm();
-						this.closeDialogs();// close page dialog that if opened
-						this.flashMsg(this.msgAfterSave);
-						this.$emit("submitted", this.record);
-						if(this.redirect) this.navigateTo(`/manager`);
+						let registrationData = response.data;
+						if (registrationData.token && registrationData.user) {
+							this.$localStore.saveLoginData(registrationData, false);
+							location.href = "/"; //reload page and navigation to home page
+						}
+						else{
+							this.flashMsg(registrationData.message);
+							this.navigateTo(registrationData.nextpage);
+						}
 					},
 					 (response) => {
 						this.saving = false;
@@ -200,11 +211,8 @@
 				requestAnimationFrame(() => {
 					this.$refs.observer.reset();
 				});
-				this.updateFormData();
 				this.$EventBus.$emit("resetForm");
 			},
-		},
-		watch: {
 		},
 		async mounted() {
 		},

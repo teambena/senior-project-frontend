@@ -8,13 +8,6 @@ let routes = [
 		path: '/',
 		component: () => import('layouts/MainLayout.vue'),
 		children: [
-			
-			{ 
-				path: '/(home)?', 
-				name: 'home' , 
-				component: () => import('pages/home/home.vue'),
-				props: true
-			},
 			//Dashboard routes
 
 
@@ -40,6 +33,27 @@ let routes = [
 			},
 	
 			{ 
+				path: '/index/register', 
+				name: 'manageruserregister', 
+				component: () => import('pages/index/userregister.vue'), 
+				props: true
+			},
+	
+			{ 
+				path: '/account/edit', 
+				name: 'manageraccountedit', 
+				component: () => import('pages/account/accountedit.vue'), 
+				props: true
+			},
+	
+			{ 
+				path: '/account', 
+				name: 'manageraccountview', 
+				component: () => import('pages/account/accountview.vue'), 
+				props: true
+			},
+	
+			{ 
 				path: '/manager/add', 
 				name: 'manageradd', 
 				component: () => import('pages/manager/add.vue'), 
@@ -56,6 +70,26 @@ let routes = [
 
 			
 			
+//Password reset routes
+			{ 
+				path: '/index/forgotpassword', 
+				name: 'forgotpassword', 
+				component: () => import('pages/index/forgotpassword.vue'), 
+				props: true
+			},
+			{ 
+				path: '/index/resetpassword', 
+				name: 'resetpassword', 
+				component: () => import('pages/index/resetpassword.vue'), 
+				props: true
+			},
+			{ 
+				path: '/index/resetpassword_completed', 
+				name: 'resetpassword_completed', 
+				component: () => import('pages/index/resetpassword_completed.vue'), 
+				props: true
+			},
+	
 			
 			
 			{ 
@@ -88,6 +122,39 @@ export default async function ({ store, ssrContext }) {
 	let mainRoute = routes.find(x => x.name = "main");
 
 	
+	let loginToken = store.getters["auth/getLoginToken"];
+	if(loginToken){
+		try{
+			await store.dispatch('auth/getUserData'); //get current user data from api on page load
+
+			mainRoute.children.push({ 
+				path: '/(home)?', 
+				name: 'home', 
+				component: () => import('pages/home/home.vue'),
+				props: true
+			});
+		}
+		catch(e){
+			/*
+			 * getting current user detail failed
+			 * token must be invalid
+			*/
+			mainRoute.children.push({ 
+				path: '/(index)?', 
+				name: 'index', 
+				component: () => import('pages/index/index.vue') ,
+				props: true
+			});
+		}
+	}
+	else{
+		/*
+		 * user has not loggedIn
+		 * show login page
+		*/
+		mainRoute.children.push({ path: '/(index|home)?', name: 'index', component: () => import('pages/index/index.vue') });
+	}
+
 
 	// Always leave this as last one
 	if (process.env.MODE !== 'ssr') {

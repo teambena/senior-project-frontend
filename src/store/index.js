@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { pageComponents } from "./page_components.js"
 import store from "./app_store.js"
+import { auth } from "./auth.js"
 import { manager } from "./manager.js"
 Vue.use(Vuex);
 
@@ -14,7 +15,8 @@ export default function (/* { ssrContext } */) {
 		actions,
 		modules: {
 			pageComponents,
-			manager
+			auth,
+		manager
 		},
 		// enable strict mode (adds overhead!)
 		// for dev mode only
