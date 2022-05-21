@@ -1,27 +1,10 @@
 <template>
     <div class="main-page">
-        <template v-if="showHeader">
-            <q-card  :flat="isSubPage" class="page-section q-py-sm q-px-md q-mb-md nice-shadow-18" >
-                <div class="container">
-                    <div class="row justify-between q-col-gutter-md">
-                        <div class="col-12 col-md-auto " >
-                            <div class="" >
-                                <div class="row  items-center q-col-gutter-sm q-px-sm">
-                                    <div class="col">
-                                        <div class="text-h6 text-primary">Edit Manager</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </q-card>
-        </template>
         <section class="page-section " >
             <div class="container">
                 <div class="row q-col-gutter-x-md">
                     <div class="col-md-9 col-12 comp-grid" >
-                        <q-card  :flat="isSubPage" class="q-pa-md nice-shadow-18">
+                        <div class="">
                             <div >
                                 <template v-if="!loading">
                                     <div class="row  q-col-gutter-x-md">
@@ -46,16 +29,14 @@
                                                     <div class="col-12">
                                                         <div class="row">
                                                             <div class="col-sm-3 col-12">
-                                                                Username *
+                                                                Username 
                                                             </div>
                                                             <div class="col-sm-9 col-12">
-                                                                <check-duplicate v-model="formData.username" check-path="components_data/manager_username_exist/" v-slot="checker">
-                                                                <ValidationProvider :rules="{required:true}" name="Username" v-slot="{ errors, invalid, validated }">
-                                                                    <q-input outlined dense  ref="ctrlusername" @blur="checker.check" :loading="checker.loading" v-model.trim="formData.username"  label="Username" type="text" placeholder="Enter Username"      
-                                                                    class="" :error="(invalid && validated) || checker.exist" :error-message="errors[0] || 'Not available'">
+                                                                <ValidationProvider :rules="{}" name="Username" v-slot="{ errors, invalid, validated }">
+                                                                    <q-input outlined dense  ref="ctrlusername" v-model.trim="formData.username"  label="Username" type="text" placeholder="Enter Username"      
+                                                                    class="" :error="invalid && validated" :error-message="errors[0]">
                                                                     </q-input>
                                                                 </ValidationProvider>
-                                                                </check-duplicate>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -133,7 +114,7 @@
                                     </div>
                                 </template>
                             </div>
-                        </q-card>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -145,7 +126,7 @@
 	import { EditPageMixin } from "../../mixins/editpage.js";
 	import { mapActions, mapGetters, mapState } from "vuex";
 	export default {
-		name: 'editManagerPage',
+		name: 'accounteditManagerPage',
 		components: {
 		},
 		mixins: [PageMixin, EditPageMixin ],
@@ -160,15 +141,15 @@
 			},
 			routeName: {
 				type: String,
-				default: 'manageredit',
+				default: 'manageraccountedit',
 			},
 			pagePath: {
 				type : String,
-				default : 'manager/edit',
+				default : 'account/edit',
 			},
 			apiPath: {
 				type: String,
-				default: 'manager/edit',
+				default: 'account/edit',
 			},
 		},
 		data() {
@@ -181,7 +162,7 @@
 		computed: {
 			pageTitle:{
 				get: function () {
-					return "Edit Manager"
+					return "My Account"
 				}
 			},
 			currentRecord: {
@@ -214,7 +195,7 @@
 							this.flashMsg(this.msgAfterUpdate);
 							this.resetForm();
 							this.closeDialogs();// close page dialog that if opened
-							if(this.redirect) this.navigateTo(`/manager`);
+							location.reload();
 						},
 						(response) => {
 							this.saving = false;
