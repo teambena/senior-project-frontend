@@ -19,6 +19,44 @@ export const AppMenus = {
     "iconcolor": "",
     "target": "",
     "submenu": []
+  },
+  {
+    "path": "/Customer",
+    "label": "Customer",
+    "icon": "extension",
+    "iconcolor": "",
+    "target": "",
+    "submenu": []
+  }
+],
+	CustomerTableHeaderItems: [
+  {
+    "label": "Customer Name",
+    "align": "left",
+    "sortable": false,
+    "name": "customer_name",
+    "field": "customer_name"
+  },
+  {
+    "label": "Customer Phone Number",
+    "align": "left",
+    "sortable": false,
+    "name": "customer_phone_number",
+    "field": "customer_phone_number"
+  },
+  {
+    "label": "Customer Email",
+    "align": "left",
+    "sortable": false,
+    "name": "customer_email",
+    "field": "customer_email"
+  },
+  {
+    "label": "Action",
+    "align": "right",
+    "sortable": false,
+    "name": "btnactions",
+    "field": ""
   }
 ],
 	ManagerTableHeaderItems: [
