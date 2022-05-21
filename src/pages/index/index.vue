@@ -7,7 +7,7 @@
                         <q-card  :flat="isSubPage" class="q-mt-lg text-center bg-grey-2 q-pa-md nice-shadow-6">
                             <div>
                                 <div class="text-h5 text-bold text-primary q-pb-md">User Login</div>
-                                <q-avatar><q-img src="images/logo.png" /></q-avatar>
+                                <q-avatar><q-img src="images/user-interface.png" /></q-avatar>
                             </div>
                         </q-card>
                         <q-card  :flat="isSubPage" class="nice-shadow-6">
@@ -58,7 +58,7 @@
                                         Don't Have an Account?
                                     </div>
                                     <div class="col-auto text-right">
-                                        <q-btn unelevated icon="account_box" no-caps color="positive" class="full-width" to="/index/register">Register
+                                        <q-btn unelevated icon="account_box" no-caps color="black" class="full-width" to="/index/register">Register
                                         </q-btn>
                                     </div>
                                 </div>

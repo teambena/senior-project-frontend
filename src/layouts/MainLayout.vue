@@ -8,7 +8,7 @@
                     <!-- App logo and name -->
                     <q-btn no-caps flat stretch to="/home" class="q-mr-lg">
                         <q-avatar size="36">
-                            <img src="images/logo.png" alt="logo" class="my-5" />
+                            <img src="images/logo.jpg" alt="logo" class="my-5" />
                         </q-avatar>
                         <q-toolbar-title>{{ $appName }}</q-toolbar-title>
                     </q-btn>
@@ -144,7 +144,7 @@
                 <q-toolbar class="  glossy">
                     <q-btn no-caps flat stretch to="/home">
                         <q-avatar size="36">
-                            <img src="images/logo.png" alt="logo" class="my-5" />
+                            <img src="images/logo.jpg" alt="logo" class="my-5" />
                         </q-avatar>
                         <q-toolbar-title>{{ $appName }}</q-toolbar-title>
                     </q-btn>
@@ -375,9 +375,6 @@
 <style>
 </style>
 <style lang="scss">
-	body.body--light {
-		background: #fafafa
-	}
 	.q-item.q-router-link--active, .q-item--active {
 		background-color: $grey-1
 	}
