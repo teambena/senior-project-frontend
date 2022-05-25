@@ -23,8 +23,8 @@ export const AppMenus = {
   {
     "path": "/Customer",
     "label": "Customer",
-    "icon": "extension",
-    "iconcolor": "",
+    "icon": "person",
+    "iconcolor": "dark",
     "target": "",
     "submenu": []
   }
