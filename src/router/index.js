@@ -11,6 +11,42 @@ let routes = [
 			//Dashboard routes
 
 
+//customer routes
+			{ 
+				path: '/customer/', 
+				name: 'customerlist', 
+				component: () => import('pages/customer/list.vue'), 
+				props: true
+			},
+			{ 
+				path: '/customer/(list|index)/:fieldName?/:fieldValue?', 
+				name: 'customerlistfilter', 
+				component: () => import('pages/customer/list.vue'), 
+				props: true
+			},
+	
+			{ 
+				path: '/customer/view/:id', 
+				name: 'customerview', 
+				component: () => import('pages/customer/view.vue'), 
+				props: true
+			},
+	
+			{ 
+				path: '/customer/add', 
+				name: 'customeradd', 
+				component: () => import('pages/customer/add.vue'), 
+				props: true
+			},
+	
+			{ 
+				path: '/customer/edit/:id', 
+				name: 'customeredit', 
+				component: () => import('pages/customer/edit.vue'), 
+				props: true
+			},
+		
+
 //manager routes
 			{ 
 				path: '/manager/', 
