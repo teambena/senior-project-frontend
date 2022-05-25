@@ -31,11 +31,25 @@ export const AppMenus = {
 ],
 	CustomerTableHeaderItems: [
   {
+    "label": "Customer Id",
+    "align": "left",
+    "sortable": false,
+    "name": "customer_id",
+    "field": "customer_id"
+  },
+  {
     "label": "Customer Name",
     "align": "left",
     "sortable": false,
     "name": "customer_name",
     "field": "customer_name"
+  },
+  {
+    "label": "Customer Email",
+    "align": "left",
+    "sortable": false,
+    "name": "customer_email",
+    "field": "customer_email"
   },
   {
     "label": "Customer Phone Number",
@@ -45,11 +59,11 @@ export const AppMenus = {
     "field": "customer_phone_number"
   },
   {
-    "label": "Customer Email",
+    "label": "Uid",
     "align": "left",
     "sortable": false,
-    "name": "customer_email",
-    "field": "customer_email"
+    "name": "uid",
+    "field": "uid"
   },
   {
     "label": "Action",

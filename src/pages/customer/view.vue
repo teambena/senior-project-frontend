@@ -43,6 +43,13 @@
                                                 <q-separator></q-separator>
                                                 <q-item>
                                                     <q-item-section>
+                                                        <q-item-label caption>Customer Email: </q-item-label>
+                                                        <q-item-label class="text-bold">{{ item.customer_email }}</q-item-label>
+                                                    </q-item-section>
+                                                </q-item>
+                                                <q-separator></q-separator>
+                                                <q-item>
+                                                    <q-item-section>
                                                         <q-item-label caption>Customer Phone Number: </q-item-label>
                                                         <q-item-label class="text-bold">{{ item.customer_phone_number }}</q-item-label>
                                                     </q-item-section>
@@ -50,8 +57,8 @@
                                                 <q-separator></q-separator>
                                                 <q-item>
                                                     <q-item-section>
-                                                        <q-item-label caption>Customer Email: </q-item-label>
-                                                        <q-item-label class="text-bold">{{ item.customer_email }}</q-item-label>
+                                                        <q-item-label caption>Uid: </q-item-label>
+                                                        <q-item-label class="text-bold">{{ item.uid }}</q-item-label>
                                                     </q-item-section>
                                                 </q-item>
                                                 <q-separator></q-separator>

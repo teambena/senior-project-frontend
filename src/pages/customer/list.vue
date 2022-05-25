@@ -75,14 +75,20 @@
                                                         <q-td auto-width>
                                                             <q-checkbox dense v-model="props.selected"></q-checkbox>
                                                         </q-td>
+                                                        <q-td  key="customer_id" :props="props">
+                                                            <q-btn padding="xs"   :rounded="false"  color="primary"  no-caps  unelevated   flat :to="`/customer/view/${props.row.customer_id}`">{{ props.row.customer_id }}</q-btn>
+                                                        </q-td>
                                                         <q-td  key="customer_name" :props="props">
                                                             {{ props.row.customer_name }}
+                                                        </q-td>
+                                                        <q-td  key="customer_email" :props="props">
+                                                            <q-btn padding="xs"   flat :rounded="false"  size=""  color="primary"  no-caps  unelevated   type="a" :href="'mailto:' + props.row.customer_email">{{ props.row.customer_email }}</q-btn>
                                                         </q-td>
                                                         <q-td  key="customer_phone_number" :props="props">
                                                             <q-btn padding="xs"   flat :rounded="false"  size=""  color="primary"  no-caps  unelevated   type="a" :href="'tel:' + props.row.customer_phone_number">{{ props.row.customer_phone_number }}</q-btn>
                                                         </q-td>
-                                                        <q-td  key="customer_email" :props="props">
-                                                            <q-btn padding="xs"   flat :rounded="false"  size=""  color="primary"  no-caps  unelevated   type="a" :href="'mailto:' + props.row.customer_email">{{ props.row.customer_email }}</q-btn>
+                                                        <q-td  key="uid" :props="props">
+                                                            {{ props.row.uid }}
                                                         </q-td>
                                                         <q-td key="btnactions" :props="props">
                                                             <div class="row q-col-gutter-xs justify-end">

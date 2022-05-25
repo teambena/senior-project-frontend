@@ -46,11 +46,11 @@
                                                     <div class="col-12">
                                                         <div class="row">
                                                             <div class="col-sm-3 col-12">
-                                                                Customer Phone Number 
+                                                                Customer Email 
                                                             </div>
                                                             <div class="col-sm-9 col-12">
-                                                                <ValidationProvider :rules="{}" name="Customer Phone Number" v-slot="{ errors, invalid, validated }">
-                                                                    <q-input outlined dense  ref="ctrlcustomer_phone_number" v-model.trim="formData.customer_phone_number"  label="Customer Phone Number" type="number" placeholder="Enter Customer Phone Number"   step="any"    
+                                                                <ValidationProvider :rules="{email:true}" name="Customer Email" v-slot="{ errors, invalid, validated }">
+                                                                    <q-input outlined dense  ref="ctrlcustomer_email" v-model.trim="formData.customer_email"  label="Customer Email" type="email" placeholder="Enter Customer Email"      
                                                                     class="" :error="invalid && validated" :error-message="errors[0]">
                                                                     </q-input>
                                                                 </ValidationProvider>
@@ -60,11 +60,11 @@
                                                     <div class="col-12">
                                                         <div class="row">
                                                             <div class="col-sm-3 col-12">
-                                                                Customer Email 
+                                                                Customer Phone Number 
                                                             </div>
                                                             <div class="col-sm-9 col-12">
-                                                                <ValidationProvider :rules="{email:true}" name="Customer Email" v-slot="{ errors, invalid, validated }">
-                                                                    <q-input outlined dense  ref="ctrlcustomer_email" v-model.trim="formData.customer_email"  label="Customer Email" type="email" placeholder="Enter Customer Email"      
+                                                                <ValidationProvider :rules="{}" name="Customer Phone Number" v-slot="{ errors, invalid, validated }">
+                                                                    <q-input outlined dense  ref="ctrlcustomer_phone_number" v-model.trim="formData.customer_phone_number"  label="Customer Phone Number" type="number" placeholder="Enter Customer Phone Number"   step="any"    
                                                                     class="" :error="invalid && validated" :error-message="errors[0]">
                                                                     </q-input>
                                                                 </ValidationProvider>
@@ -130,7 +130,7 @@
 		data() {
             return {
 				formData: {
-					customer_name: "", customer_phone_number: "", customer_email: "", 
+					customer_name: "", customer_email: "", customer_phone_number: "", 
 				},
         	}
 		},
@@ -185,7 +185,7 @@
             },
 			resetForm (){
 				//reset form fields value
-				this.formData = {customer_name: "", customer_phone_number: "", customer_email: "", };
+				this.formData = {customer_name: "", customer_email: "", customer_phone_number: "", };
 				requestAnimationFrame(() => {
 					this.$refs.observer.reset();
 				});
