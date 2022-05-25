@@ -58,7 +58,7 @@
                                                 <q-item>
                                                     <q-item-section>
                                                         <q-item-label caption>Uid: </q-item-label>
-                                                        <q-item-label class="text-bold">{{ item.uid }}</q-item-label>
+                                                        <q-item-label class="text-bold">{{ item.uid  | current_user.manager_id}}</q-item-label>
                                                     </q-item-section>
                                                 </q-item>
                                                 <q-separator></q-separator>
