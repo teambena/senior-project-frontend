@@ -27,6 +27,79 @@ export const AppMenus = {
     "iconcolor": "dark",
     "target": "",
     "submenu": []
+  },
+  {
+    "path": "/Appointment",
+    "label": "Appointment",
+    "icon": "extension",
+    "iconcolor": "",
+    "target": "",
+    "submenu": []
+  }
+],
+	AppointmentTableHeaderItems: [
+  {
+    "label": "Appointment Id",
+    "align": "left",
+    "sortable": false,
+    "name": "appointment_id",
+    "field": "appointment_id"
+  },
+  {
+    "label": "Customer",
+    "align": "left",
+    "sortable": false,
+    "name": "customer",
+    "field": "customer"
+  },
+  {
+    "label": "Start Date",
+    "align": "left",
+    "sortable": false,
+    "name": "start_date",
+    "field": "start_date"
+  },
+  {
+    "label": "Start Time",
+    "align": "left",
+    "sortable": false,
+    "name": "start_time",
+    "field": "start_time"
+  },
+  {
+    "label": "End Date",
+    "align": "left",
+    "sortable": false,
+    "name": "end_date",
+    "field": "end_date"
+  },
+  {
+    "label": "End Time",
+    "align": "left",
+    "sortable": false,
+    "name": "end_time",
+    "field": "end_time"
+  },
+  {
+    "label": "Description",
+    "align": "left",
+    "sortable": false,
+    "name": "description",
+    "field": "description"
+  },
+  {
+    "label": "Uid",
+    "align": "left",
+    "sortable": false,
+    "name": "uid",
+    "field": "uid"
+  },
+  {
+    "label": "Action",
+    "align": "right",
+    "sortable": false,
+    "name": "btnactions",
+    "field": ""
   }
 ],
 	CustomerTableHeaderItems: [

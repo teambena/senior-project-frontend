@@ -11,6 +11,42 @@ let routes = [
 			//Dashboard routes
 
 
+//appointment routes
+			{ 
+				path: '/appointment/', 
+				name: 'appointmentlist', 
+				component: () => import('pages/appointment/list.vue'), 
+				props: true
+			},
+			{ 
+				path: '/appointment/(list|index)/:fieldName?/:fieldValue?', 
+				name: 'appointmentlistfilter', 
+				component: () => import('pages/appointment/list.vue'), 
+				props: true
+			},
+	
+			{ 
+				path: '/appointment/view/:id', 
+				name: 'appointmentview', 
+				component: () => import('pages/appointment/view.vue'), 
+				props: true
+			},
+	
+			{ 
+				path: '/appointment/add', 
+				name: 'appointmentadd', 
+				component: () => import('pages/appointment/add.vue'), 
+				props: true
+			},
+	
+			{ 
+				path: '/appointment/edit/:id', 
+				name: 'appointmentedit', 
+				component: () => import('pages/appointment/edit.vue'), 
+				props: true
+			},
+		
+
 //customer routes
 			{ 
 				path: '/customer/', 
