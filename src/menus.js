@@ -31,7 +31,7 @@ export const AppMenus = {
   {
     "path": "/Appointment",
     "label": "Appointment",
-    "icon": "extension",
+    "icon": "library_books",
     "iconcolor": "",
     "target": "",
     "submenu": []

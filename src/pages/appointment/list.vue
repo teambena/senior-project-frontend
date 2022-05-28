@@ -13,23 +13,33 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-auto col-12 " >
-                            <q-btn       :rounded="false"  size=""  color="primary" no-caps  unelevated   :to="`/appointment/add`" class="full-width" >
-                                <q-icon name="add"></q-icon>                                
-                                Add New Appointment 
-                            </q-btn>
-                        </div>
-                        <div class="col-md-auto col-12 " >
-                            <q-input debounce="1000" outlined dense  placeholder="Search" v-model="searchText" >
-                            <template v-slot:append>
-                                <q-icon name="search"></q-icon>
-                            </template>
-                            </q-input>
-                        </div>
                     </div>
                 </div>
             </q-card>
         </template>
+        <section class="page-section q-mb-md" >
+            <div class="container-fluid">
+                <div class="row q-col-gutter-x-md">
+                    <div class="col-1 col-md-4 comp-grid" >
+                    </div>
+                    <div class="col-6 col-md-4 comp-grid" >
+                        <q-input debounce="1000" outlined dense  placeholder="Search" v-model="searchText" >
+                        <template v-slot:append>
+                            <q-icon name="search"></q-icon>
+                        </template>
+                        </q-input>
+                    </div>
+                    <div class="col-2 col-md-2 comp-grid" >
+                    </div>
+                    <div class="col-3 col-md-2 comp-grid" >
+                        <q-btn       :rounded="false"  size=""  color="primary" no-caps  unelevated   :to="`/appointment/add`" class="full-width" >
+                            <q-icon name="add"></q-icon>                                
+                            Add New Appointment 
+                        </q-btn>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="page-section " >
             <div class="container-fluid">
                 <div class="row q-col-gutter-x-md">
