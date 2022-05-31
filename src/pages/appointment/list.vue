@@ -106,6 +106,13 @@
                                                         <q-td  key="description" :props="props">
                                                             {{ props.row.description }}
                                                         </q-td>
+                                                        <q-td  key="status" :props="props">
+                                                            <q-icon :class="props.row.status == 1.0 ? 'text-positive' : 'text-grey'" size="md" name="check_circle">
+                                                            <q-tooltip anchor="top middle" content-class="bg-accent">
+                                                            {{ props.row.status }}
+                                                            </q-tooltip>
+                                                            </q-icon>
+                                                        </q-td>
                                                         <q-td  key="uid" :props="props">
                                                             {{ props.row.uid }}
                                                         </q-td>
@@ -193,12 +200,14 @@
     </div>
 </template>
 <script>
+		//[--PAGE-IMPORT-STATEMENT--]
 	import { PageMixin } from "../../mixins/page.js";
 	import { ListPageMixin } from "../../mixins/listpage.js";
 	import { mapActions, mapGetters, mapState } from "vuex";
 	export default {
 		name: 'listAppointmentPage',
 		components: {
+			//[--PAGE-COMPONENT-NAME--]
         },
 		mixins: [PageMixin, ListPageMixin ],
 		props: {
@@ -306,4 +315,7 @@
 	};
 </script>
 <style scoped>
+</style>
+<style scoped>
+
 </style>

@@ -88,6 +88,13 @@ export const AppMenus = {
     "field": "description"
   },
   {
+    "label": "Status",
+    "align": "left",
+    "sortable": false,
+    "name": "status",
+    "field": "status"
+  },
+  {
     "label": "Uid",
     "align": "left",
     "sortable": false,
@@ -102,6 +109,10 @@ export const AppMenus = {
     "field": ""
   }
 ],
+	statusItems: [    
+  {value: "0", label: "Not Confirmed"},
+	{value: "1", label: "Confirmed"}
+    ],
 	CustomerTableHeaderItems: [
   {
     "label": "Customer Id",

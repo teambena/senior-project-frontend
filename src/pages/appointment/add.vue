@@ -133,6 +133,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-12">
+                                                    Status 
+                                                </div>
+                                                <div class="col-sm-9 col-12">
+                                                    <ValidationProvider :rules="{}" name="Status" v-slot="{ errors, invalid, validated }">
+                                                        <q-field :error="invalid && validated" :error-message="errors[0]"  borderless  >
+                                                        <q-option-group ref="ctrlstatus" v-model="formData.status" :options="$menus.statusItems"  :error="invalid && validated" :error-message="errors[0]"   size="md" ></q-option-group>
+                                                        </q-field>
+                                                    </ValidationProvider>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div v-if="showSubmitButton" class="text-center q-my-md">
                                         <q-btn type="submit"    :rounded="false"  color="primary"  no-caps  unelevated   :disabled="invalid" icon-right="send" :loading="saving">
@@ -175,7 +189,7 @@
 		data() {
             return {
 				formData: {
-					customer: "", start_date: "", start_time: "", end_date: "", end_time: "", description: "", 
+					customer: "", start_date: "", start_time: "", end_date: "", end_time: "", description: "", status: "", 
 				},
 				start_datePicker:false,start_timePicker:false,end_datePicker:false,end_timePicker:false,
 			}
@@ -218,7 +232,7 @@
 				}
 			},
 			resetForm (){
-				this.formData = {customer: "", start_date: "", start_time: "", end_date: "", end_time: "", description: "", };
+				this.formData = {customer: "", start_date: "", start_time: "", end_date: "", end_time: "", description: "", status: "", };
 				requestAnimationFrame(() => {
 					this.$refs.observer.reset();
 				});

@@ -83,6 +83,19 @@
                                                     </q-item-section>
                                                 </q-item>
                                                 <q-separator></q-separator>
+                                                <q-item>
+                                                    <q-item-section>
+                                                        <q-item-label caption>Status: </q-item-label>
+                                                        <q-item-label class="text-bold">
+                                                            <q-icon :class="item.status == 'true' ? 'text-positive' : 'text-grey'" size="md" name="check_circle">
+                                                            <q-tooltip anchor="top middle" content-class="bg-accent">
+                                                            {{ item.status }}
+                                                            </q-tooltip>
+                                                            </q-icon>
+                                                        </q-item-label>
+                                                    </q-item-section>
+                                                </q-item>
+                                                <q-separator></q-separator>
                                                 <q-card-actions class="row q-col-gutter-xs justify-end">
                                                     <q-btn icon="menu" padding="xs" round flat color="grey">
                                                         <q-menu auto-close transition-show="flip-right"  transition-hide="flip-left" self="center middle" anchor="center middle">
