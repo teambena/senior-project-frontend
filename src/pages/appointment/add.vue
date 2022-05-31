@@ -31,11 +31,12 @@
                                                     Customer 
                                                 </div>
                                                 <div class="col-sm-9 col-12">
-                                                    <ValidationProvider :rules="{}" name="Customer" v-slot="{ errors, invalid, validated }">
-                                                        <q-input outlined dense  ref="ctrlcustomer" v-model.trim="formData.customer"  label="Customer" type="text" placeholder="Enter Customer"      
-                                                        class="" :error="invalid && validated" :error-message="errors[0]">
-                                                        </q-input>
-                                                    </ValidationProvider>
+                                                    <api-data-source @loaded="response => mapOptionField(response, 'customer')"  api-path="components_data/customer_option_list"  :query-params="filters" v-slot="req">
+                                                        <ValidationProvider :rules="{}" name="Customer" v-slot="{ errors, invalid, validated }">
+                                                            <q-select   :loading="req.loading"  outlined dense  ref="ctrlcustomer" emit-value map-options  v-model="formData.customer" :options="req.response" label="Customer"  :error="invalid && validated" :error-message="errors[0]" >
+                                                            </q-select> 
+                                                        </ValidationProvider>
+                                                    </api-data-source>
                                                 </div>
                                             </div>
                                         </div>
