@@ -223,7 +223,7 @@
 						this.closeDialogs();// close page dialog that if opened
 						this.flashMsg(this.msgAfterSave);
 						this.$emit("submitted", this.record);
-						if(this.redirect) this.navigateTo(`/appointment`);
+						if(this.redirect) this.navigateTo(`/calendar`);
 					},
 					 (response) => {
 						this.saving = false;

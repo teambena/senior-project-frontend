@@ -140,6 +140,13 @@ let routes = [
 			},
 		
 
+			{ 
+				path: '/calendar', 
+				name: 'calendar', 
+				component: () => import('pages/custom/calendar.vue'), 
+				props: true
+			},
+	
 			
 			
 //Password reset routes

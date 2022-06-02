@@ -35,6 +35,14 @@ export const AppMenus = {
     "iconcolor": "",
     "target": "",
     "submenu": []
+  },
+  {
+    "path": "/calendar",
+    "label": "Calendar",
+    "icon": "extension",
+    "iconcolor": "",
+    "target": "",
+    "submenu": []
   }
 ],
 	AppointmentTableHeaderItems: [
@@ -110,7 +118,7 @@ export const AppMenus = {
   }
 ],
 	statusItems: [    
-  {value: "0", label: "Not Confirmed"},
+{value: "0", label: "Not Confirmed"},
 	{value: "1", label: "Confirmed"}
     ],
 	CustomerTableHeaderItems: [
