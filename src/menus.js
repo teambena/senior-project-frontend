@@ -39,7 +39,7 @@ export const AppMenus = {
   {
     "path": "/calendar",
     "label": "Calendar",
-    "icon": "extension",
+    "icon": "event",
     "iconcolor": "",
     "target": "",
     "submenu": []
