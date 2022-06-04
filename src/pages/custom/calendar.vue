@@ -27,7 +27,6 @@
                                 default-view="month"
                                 height="80vh"
                                 event-color="#312F36"
-                                header-title="Calender"
                                 :show-header="true"
                                 id-field="appointment_id"
                                 view-event-page-type="dialog"
