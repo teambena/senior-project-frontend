@@ -45,6 +45,57 @@ export const AppMenus = {
     "submenu": []
   }
 ],
+  UpcomingAppointmentTableHeaderItems: [
+    {
+      "label": "Customer",
+      "align": "left",
+      "sortable": false,
+      "name": "customer",
+      "field": "customer"
+    },
+    {
+      "label": "Start Date",
+      "align": "left",
+      "sortable": false,
+      "name": "start_date",
+      "field": "start_date"
+    },
+    {
+      "label": "Start Time",
+      "align": "left",
+      "sortable": false,
+      "name": "start_time",
+      "field": "start_time"
+    },
+    {
+      "label": "End Date",
+      "align": "left",
+      "sortable": false,
+      "name": "end_date",
+      "field": "end_date"
+    },
+    {
+      "label": "End Time",
+      "align": "left",
+      "sortable": false,
+      "name": "end_time",
+      "field": "end_time"
+    },
+    {
+      "label": "Description",
+      "align": "left",
+      "sortable": false,
+      "name": "description",
+      "field": "description"
+    },
+    {
+      "label": "Status",
+      "align": "left",
+      "sortable": false,
+      "name": "status",
+      "field": "status"
+    },
+  ],
 	AppointmentTableHeaderItems: [
   {
     "label": "Appointment Id",
@@ -118,7 +169,7 @@ export const AppMenus = {
   }
 ],
 	statusItems: [    
-{value: "0", label: "Not Confirmed"},
+  {value: "0", label: "Not Confirmed"},
 	{value: "1", label: "Confirmed"}
     ],
 	CustomerTableHeaderItems: [
