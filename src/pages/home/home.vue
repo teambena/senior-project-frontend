@@ -47,145 +47,132 @@
             <div class="container-fluid">
                 <div class="row q-col-gutter-x-md">
                     <div class="col-md-12 comp-grid" >
-                        <div class="">
-                            <div class="main-page">
-                                <template v-if="showHeader">
-                                    <q-card  :flat="isSubPage" class="page-section q-py-sm q-px-md q-mb-md nice-shadow-18" >
-                                        <div class="container-fluid">
-                                            <div class="row justify-between q-col-gutter-md">
-                                                <div class="col-12 col-md-auto " >
-                                                    <div class="" >
-                                                        <div class="row  items-center q-col-gutter-sm q-px-sm">
-                                                            <div class="col">
-                                                                <div class="text-h6 text-primary"> Upcoming Appointment</div>
+                        <q-card  :flat="isSubPage" class=" nice-shadow-18">
+                            <div class="q-pa-md">
+                                <div class="text-weight-bold text-h5">Upcoming Appointment</div>
+                                <div class="text-caption"></div>
+                                <q-separator class="q-my-md"></q-separator>
+                                <div class="row q-col-gutter-sm">
+                                    <div class="col">
+                                        <!-- page records template -->
+                                        <template >
+                                            <q-table 
+                                            :flat="true"
+                                            table-header-class="text-h4 "
+                                            :bordered="false"
+                                            :columns="$menus.UpcomingAppointmentTableHeaderItems" 
+                                            :data="records"
+                                            binary-state-sort
+                                            separator="horizontal"
+                                            :dense="true"
+                                            :selected.sync="selectedItems"
+                                            row-key="appointment_id" 
+                                            :pagination.sync="pagination"
+                                            hide-bottom
+                                            @request="setPagination"
+                                            :loading="loading">
+                                            <!-- Start of Table Layout -->
+                                            <template v-slot:body="props">
+                                                <q-tr :props="props">
+                                                    <q-td  key="customer" :props="props">
+                                                        {{ props.row.customer }}
+                                                    </q-td>
+                                                    <q-td  key="start_date" :props="props">
+                                                        {{ props.row.start_date }}
+                                                    </q-td>
+                                                    <q-td  key="start_time" :props="props">
+                                                        {{ props.row.start_time }}
+                                                    </q-td>
+                                                    <q-td  key="end_date" :props="props">
+                                                        {{ props.row.end_date }}
+                                                    </q-td>
+                                                    <q-td  key="end_time" :props="props">
+                                                        {{ props.row.end_time }}
+                                                    </q-td>
+                                                    <q-td  key="description" :props="props">
+                                                        {{ props.row.description }}
+                                                    </q-td>
+                                                    <q-td  key="status" :props="props">
+                                                        <q-icon :class="props.row.status == 1.0 ? 'text-positive' : 'text-grey'" size="md" name="check_circle">
+                                                        <q-tooltip anchor="top middle" content-class="bg-accent">
+                                                        {{ props.row.status }}
+                                                        </q-tooltip>
+                                                        </q-icon>
+                                                    </q-td>
+                                                </q-tr>
+                                            </template>
+                                            <!-- End of Table Layout-->
+                                            </q-table>
+                                        </template>
+                                        <!-- page loading indicator template -->
+                                        <template v-if="loading">
+                                            <q-inner-loading :showing="loading">
+                                                <q-spinner color="primary" size="30px"> 
+                                                </q-spinner>
+                                            </q-inner-loading>
+                                        </template>
+                                        <!-- page empty record template -->
+                                        <template v-if="!loading && !records.length">
+                                            <q-card :flat="$q.screen.gt.md">
+                                                <q-card-section>
+                                                    <div class="text-grey text-h6 text-center">
+                                                        No record found
+                                                    </div>
+                                                </q-card-section>
+                                            </q-card>
+                                        </template>
+                                        <!-- page footer template-->
+                                        <template v-if="showFooter">
+                                            <div class="">
+                                                <div class="q-pa-sm" v-show="!loading">
+                                                    <div class="row justify-between">
+                                                        <div class="row q-col-gutter-md">
+                                                            <div>
+                                                                <q-btn    :rounded="false"  no-caps  unelevated   color="negative" padding="xs" @click="deleteItem(selectedItems)" v-if="selectedItems.length" icon="delete_sweep" class="q-my-xs" title="Delete Selected"></q-btn>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                        <div v-if="paginate && totalRecords > 0" class="row q-col-gutter-md justify-center">
+                                                            <div class="col-auto">
+                                                                <q-chip>Records {{recordsPosition}} of {{totalRecords}}</q-chip>
+                                                            </div>
+                                                            <div v-if="totalPages > 1">
+                                                                <q-pagination  color="primary" flat glossy  input v-model="pagination.page" :direction-links="true" :boundary-links="true" :max-pages="5" :boundary-numbers="true" :max="totalPages"></q-pagination>
+                                                            </div>
+                                                        </div>
+                                                    </div>  
                                                 </div>
                                             </div>
-                                        </div>
-                                    </q-card>
-                                </template>
-                                <section class="page-section q-mb-md" >
-                                    <div class="container-fluid">
-                                    </div>
-                                </section>
-                                <section class="page-section " >
-                                    <div class="container-fluid">
-                                        <div class="row q-col-gutter-x-md">
-                                            <div class="col comp-grid" >
-                                                <div class="">
-                                                    <div >
-                                                        <template v-if="showBreadcrumbs && $route.query.tag">
-                                                            <q-breadcrumbs class="q-pa-md">
-                                                                <q-breadcrumbs-el icon="arrow_back" class="text-capitalize" :label="$route.query.tag" to="/appointment"></q-breadcrumbs-el>
-                                                                <q-breadcrumbs-el :label="$route.query.label"></q-breadcrumbs-el>
-                                                            </q-breadcrumbs>
-                                                        </template>
-                                                        <div class="relative-position">
-                                                            <div class="row q-col-gutter-x-md">
-                                                                <!-- Master Page Start -->
-                                                                <div class="col">
-                                                                    <!-- page records template -->
-                                                                    <template >
-                                                                        <q-table 
-                                                                        :flat="true"
-                                                                        table-header-class="text-h4 "
-                                                                        :bordered="false"
-                                                                        :columns="$menus.UpcomingAppointmentTableHeaderItems" 
-                                                                        :data="records"
-                                                                        binary-state-sort
-                                                                        separator="horizontal"
-                                                                        :dense="true"
-                                                                        :selected.sync="selectedItems"
-                                                                        row-key="appointment_id" 
-                                                                        :pagination.sync="pagination"
-                                                                        hide-bottom
-                                                                        @request="setPagination"
-                                                                        :loading="loading">
-                                                                        <!-- Start of Table Layout -->
-                                                                        <template v-slot:body="props">
-                                                                            <q-tr :props="props">
-                                                                                <q-td  key="customer" :props="props">
-                                                                                    {{ props.row.customer }}
-                                                                                </q-td>
-                                                                                <q-td  key="start_date" :props="props">
-                                                                                    {{ props.row.start_date }}
-                                                                                </q-td>
-                                                                                <q-td  key="start_time" :props="props">
-                                                                                    {{ props.row.start_time }}
-                                                                                </q-td>
-                                                                                <q-td  key="end_date" :props="props">
-                                                                                    {{ props.row.end_date }}
-                                                                                </q-td>
-                                                                                <q-td  key="end_time" :props="props">
-                                                                                    {{ props.row.end_time }}
-                                                                                </q-td>
-                                                                                <q-td  key="description" :props="props">
-                                                                                    {{ props.row.description }}
-                                                                                </q-td>
-                                                                                <q-td  key="status" :props="props">
-                                                                                    <q-icon :class="props.row.status == 1.0 ? 'text-positive' : 'text-grey'" size="md" name="check_circle">
-                                                                                    <q-tooltip anchor="top middle" content-class="bg-accent">
-                                                                                    {{ props.row.status }}
-                                                                                    </q-tooltip>
-                                                                                    </q-icon>
-                                                                                </q-td>
-                                                                            </q-tr>
-                                                                        </template>
-                                                                        <!-- End of Table Layout-->
-                                                                        </q-table>
-                                                                    </template>
-                                                                    <!-- page loading indicator template -->
-                                                                    <template v-if="loading">
-                                                                        <q-inner-loading :showing="loading">
-                                                                            <q-spinner color="primary" size="30px"> 
-                                                                            </q-spinner>
-                                                                        </q-inner-loading>
-                                                                    </template>
-                                                                    <!-- page empty record template -->
-                                                                    <template v-if="!loading && !records.length">
-                                                                        <q-card :flat="$q.screen.gt.md">
-                                                                            <q-card-section>
-                                                                                <div class="text-grey text-h6 text-center">
-                                                                                    No record found
-                                                                                </div>
-                                                                            </q-card-section>
-                                                                        </q-card>
-                                                                    </template>
-                                                                    <!-- page footer template-->
-                                                                    <template v-if="showFooter">
-                                                                        <div class="">
-                                                                            <div class="q-pa-sm" v-show="!loading">
-                                                                                <div class="row justify-between">
-                                                                                    <div class="row q-col-gutter-md">
-                                                                                        <div>
-                                                                                            <q-btn    :rounded="false"  no-caps  unelevated   color="negative" padding="xs" @click="deleteItem(selectedItems)" v-if="selectedItems.length" icon="delete_sweep" class="q-my-xs" title="Delete Selected"></q-btn>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div v-if="paginate && totalRecords > 0" class="row q-col-gutter-md justify-center">
-                                                                                        <div class="col-auto">
-                                                                                            <q-chip>Records {{recordsPosition}} of {{totalRecords}}</q-chip>
-                                                                                        </div>
-                                                                                        <div v-if="totalPages > 1">
-                                                                                            <q-pagination  color="primary" flat glossy  input v-model="pagination.page" :direction-links="true" :boundary-links="true" :max-pages="5" :boundary-numbers="true" :max="totalPages"></q-pagination>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>  
-                                                                            </div>
-                                                                        </div>
-                                                                    </template>
+                                        </template>
+                                        <section class="page-section q-mb-md" >
+                                            <div class="container-fluid">
+                                            </div>
+                                        </section>
+                                        <section class="page-section " >
+                                            <div class="container-fluid">
+                                                <div class="row q-col-gutter-x-md">
+                                                    <div class="col comp-grid" >
+                                                        <div class="">
+                                                            <div >
+                                                                <template v-if="showBreadcrumbs && $route.query.tag">
+                                                                    <q-breadcrumbs class="q-pa-md">
+                                                                        <q-breadcrumbs-el icon="arrow_back" class="text-capitalize" :label="$route.query.tag" to="/appointment"></q-breadcrumbs-el>
+                                                                        <q-breadcrumbs-el :label="$route.query.label"></q-breadcrumbs-el>
+                                                                    </q-breadcrumbs>
+                                                                </template>
+                                                                <div class="relative-position">
+                                                                    <div class="row q-col-gutter-x-md">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </section>
                                     </div>
-                                </section>
+                                </div>
                             </div>
-                        </div>
+                        </q-card>
                     </div>
                 </div>
             </div>
