@@ -13,7 +13,7 @@ export const AppMenus = {
     "submenu": []
   },
   {
-    "path": "/manager",
+    "path": "/Manager",
     "label": "Manager",
     "icon": "extension",
     "iconcolor": "",
@@ -169,8 +169,8 @@ export const AppMenus = {
   }
 ],
 	statusItems: [    
-  {value: "0", label: "Not Confirmed"},
-	{value: "1", label: "Confirmed"}
+  {value: "Waiting", label: "Not Confirmed"},
+	{value: "Confirmed", label: "Confirmed"}
     ],
 	CustomerTableHeaderItems: [
   {
