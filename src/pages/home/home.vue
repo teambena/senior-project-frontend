@@ -97,7 +97,7 @@
                                                                         {{ props.row.description }}
                                                                     </q-td>
                                                                     <q-td  key="status" :props="props">
-                                                                        <q-icon :class="props.row.status == 1.0 ? 'text-positive' : 'text-grey'" size="md" name="check_circle">
+                                                                        <q-icon :class="props.row.status == 'Confirmed' ? 'text-positive' : 'text-grey'" size="md" name="check_circle">
                                                                         <q-tooltip anchor="top middle" content-class="bg-accent">
                                                                         {{ props.row.status }}
                                                                         </q-tooltip>
