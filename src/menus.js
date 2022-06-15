@@ -13,14 +13,6 @@ export const AppMenus = {
     "submenu": []
   },
   {
-    "path": "/Manager",
-    "label": "Manager",
-    "icon": "extension",
-    "iconcolor": "",
-    "target": "",
-    "submenu": []
-  },
-  {
     "path": "/Customer",
     "label": "Customer",
     "icon": "person",
