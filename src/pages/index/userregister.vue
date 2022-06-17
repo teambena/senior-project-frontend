@@ -36,6 +36,20 @@
                                         <div class="col-12">
                                             <div class="row">
                                                 <div class="col-sm-3 col-12">
+                                                    Name 
+                                                </div>
+                                                <div class="col-sm-9 col-12">
+                                                    <ValidationProvider :rules="{}" name="Name" v-slot="{ errors, invalid, validated }">
+                                                        <q-input outlined dense  ref="ctrlname" v-model.trim="formData.name"  label="Name" type="text" placeholder="Enter Name"      
+                                                        class="" :error="invalid && validated" :error-message="errors[0]">
+                                                        </q-input>
+                                                    </ValidationProvider>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-12">
                                                     Username *
                                                 </div>
                                                 <div class="col-sm-9 col-12">
@@ -109,11 +123,39 @@
                                         <div class="col-12">
                                             <div class="row">
                                                 <div class="col-sm-3 col-12">
+                                                    Business Name 
+                                                </div>
+                                                <div class="col-sm-9 col-12">
+                                                    <ValidationProvider :rules="{}" name="Business Name" v-slot="{ errors, invalid, validated }">
+                                                        <q-input outlined dense  ref="ctrlbusiness_name" v-model.trim="formData.business_name"  label="Business Name" type="text" placeholder="Enter Business Name"      
+                                                        class="" :error="invalid && validated" :error-message="errors[0]">
+                                                        </q-input>
+                                                    </ValidationProvider>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-12">
                                                     Business Phone Number 
                                                 </div>
                                                 <div class="col-sm-9 col-12">
                                                     <ValidationProvider :rules="{}" name="Business Phone Number" v-slot="{ errors, invalid, validated }">
                                                         <q-input outlined dense  ref="ctrlbusiness_phone_number" v-model.trim="formData.business_phone_number"  label="Business Phone Number" type="number" placeholder="Enter Business Phone Number"   step="any"    
+                                                        class="" :error="invalid && validated" :error-message="errors[0]">
+                                                        </q-input>
+                                                    </ValidationProvider>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-12">
+                                                    Business Address 
+                                                </div>
+                                                <div class="col-sm-9 col-12">
+                                                    <ValidationProvider :rules="{}" name="Business Address" v-slot="{ errors, invalid, validated }">
+                                                        <q-input outlined dense  ref="ctrlbusiness_address" v-model.trim="formData.business_address"  label="Business Address" type="text" placeholder="Enter Business Address"      
                                                         class="" :error="invalid && validated" :error-message="errors[0]">
                                                         </q-input>
                                                     </ValidationProvider>
@@ -162,7 +204,7 @@
 		data() {
             return {
 				formData: {
-					username: "", email: "", password: "", confirm_password: "", business_phone_number: "", 
+					name: "", username: "", email: "", password: "", confirm_password: "", business_name: "", business_phone_number: "", business_address: "", 
 				},
 			}
 		},
@@ -207,7 +249,7 @@
 				}
 			},
 			resetForm (){
-				this.formData = {username: "", email: "", password: "", confirm_password: "", business_phone_number: "", };
+				this.formData = {name: "", username: "", email: "", password: "", confirm_password: "", business_name: "", business_phone_number: "", business_address: "", };
 				requestAnimationFrame(() => {
 					this.$refs.observer.reset();
 				});
