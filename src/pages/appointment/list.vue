@@ -139,6 +139,12 @@
                                                                                 </q-item-section>
                                                                                 <q-item-section>Delete</q-item-section>
                                                                             </q-item>
+                                                                            <q-item link clickable v-ripple @click="deleteItem(props.row.appointment_id)">
+                                                                                <q-item-section>
+                                                                                    <q-icon color="blue"  size="sm" name="call"></q-icon>
+                                                                                </q-item-section>
+                                                                                <q-item-section>Contact</q-item-section>
+                                                                            </q-item>
                                                                         </q-list>
                                                                     </q-menu>
                                                                 </q-btn>
