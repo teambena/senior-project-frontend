@@ -147,6 +147,13 @@ let routes = [
 				props: true
 			},
 	
+			{ 
+				path: '/contact', 
+				name: 'contact', 
+				component: () => import('pages/custom/contact.vue'), 
+				props: true
+			},
+	
 			
 			
 //Password reset routes
