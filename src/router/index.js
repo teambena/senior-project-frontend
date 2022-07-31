@@ -168,6 +168,12 @@ let routes = [
 				component: () => import('pages/index/resetpassword_completed.vue'), 
 				props: true
 			},
+			{ 
+				path: '/index/confirmappointment', 
+				name: 'confirmappointment', 
+				component: () => import('pages/index/confirmappointment.vue'), 
+				props: true
+			},
 	
 			
 			
